@@ -1,0 +1,31 @@
+<h2 class="wp-block-heading has-text-align-center has-xxx-large-font-size counter" data-count="16" style="font-style:normal;font-size: 100px; color: black; font-weight:100">0</h2>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+function animateCounter() {
+  $('.counter').each(function() {
+    var $this = $(this),
+        countTo = $this.attr('data-count');
+    
+    $({ countNum: $this.text() }).animate({
+      countNum: countTo
+    },
+    {
+      duration: 5000,
+      easing: 'linear',
+      step: function() {
+        $this.text(Math.floor(this.countNum));
+      },
+      complete: function() {
+        $this.text(this.countNum);
+      }
+    });  
+  });
+}
+
+// Ejecuta la función animateCounter cada vez que se realiza un desplazamiento
+$(window).scroll(function() {
+  animateCounter();
+});
+</script>
+
